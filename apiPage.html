@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Morris</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="headerdiv">
+            <h1>Project Morris</h1>
+        </div>
+    </header>
+
+        <nav class="navmorris">
+            <a href="{{ url_for('home') }}">User</a>
+            <a href="{{ url_for('grouppage') }}">Group</a>
+            <a href="{{ url_for('aboutpage') }}">About</a>
+            <a href="{{url_for('apiPage')}}">API</a>
+        </nav>
+    <section>
+        <h2>API Information</h2>
+            <div class="divabout">
+                <p>The Project Morris API provides developers with programmatic access to the data and functionalities of Project Morris. This API is designed to facilitate the retrieval of user and group information related to NSFW content on the Roblox platform.</p>
+                <h3>Base URL</h3>
+                <p>The base URL for all API endpoints is: <code>https://projectmorris.org/api</code></p>
+                <h3>Endpoints</h3>
+                <ul>
+                    <li><strong>GET /users/&lt;user_id&gt;</strong>: Retrieve information about a specific user by their user ID.</li>
+                    <li><strong>GET /groups/&lt;group_id&gt;</strong>: Retrieve information about a specific group by its group ID.</li>
+                    <li><strong>GET /groups&gt;</strong>: Retrive all of the archived groups</li>
+                </ul>
+                <h3>Response Format</h3>
+                <p>All API responses are returned in JSON format.</p>
+            </div>
+    </section>
+    <footer>
+        <p class="footermorris">Project Morris created by Mater. Not affiliated with Roblox Corp</p>
+        <p><img src="/static/logo.png" width="50" height="50" alt="site logo"></p>
+    </footer>
+</body>
+</html>

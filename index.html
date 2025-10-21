@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Morris</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="headerdiv">
+            <h1>Project Morris</h1>
+        </div>
+    </header>
+    <nav class="navmorris">
+            <a href="{{ url_for('home') }}">User</a>
+            <a href="{{ url_for('grouppage') }}">Group</a>
+            <a href="{{ url_for('aboutpage') }}">About</a>
+            <a href="{{url_for('apiPage')}}">API</a>
+    </nav>
+    <main>
+        <section>
+            <h3>WARNING this tool has been known to find some pretty nasty results! If you do not want to see them do NOT continue!</h3>
+            <form method="post" class="formmorris">
+                <input name="query" type="text" class="textareamorris"
+                 placeholder="Enter a description, username, or userid." value="{{ search_query or '' }}">
+                <button class="buttonmorris" type="submit" name="action" value="search">Submit</button>
+                <button class="buttonmorris" type="submit" name="action" value="recent">Recent</button>
+            </form>
+
+            <div class="outputmorris">
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
+
+                {% if users is defined %}
+                    {% if users %}
+                        <h3>{{ result_title }}</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Username</th>
+                                    <th>Display Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                <tr>
+                                    <td>{{ user.user_id }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.display_name }}</td>
+                                    <td >{{ user.description or 'N/A' }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        {% if user_groups %}
+                            <h3>Known Group Memberships</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Group ID</th>
+                                        <th>Group Name</th>
+                                        <th>Member Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for group in user_groups %}
+                                    <tr>
+                                        <td>{{ group.group_id }}</td>
+                                        <td>{{ group.group_name }}</td>
+                                        <td>{{ "{:,}".format(group.member_count) if group.member_count else 'N/A' }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+
+                    {% elif result_title %}
+                        <p>{{ result_title }}</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p class="footermorris">Project Morris created by Mater. Not affiliated with Roblox Corp</p>
+        <p><img src="/static/logo.png" width="50" height="50" alt="site logo"></p>
+    </footer>
+</body>
+</html>
