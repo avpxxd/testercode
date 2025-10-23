@@ -97,22 +97,23 @@ i {
 }
 .tabcontent {
     display: none; /* Hide all tabs by default */
-    padding: 12px 12px;
-	margin-top: 4rem;
-    margin-bottom: 4rem;
+    border-radius: var(--bs-border-radius-lg);
     background-color: #1f2937; /* Darker Gray Background (gray-800) */
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Darker shadow */
+    
 }
-/* Specific override for homepage content */
-#home h1, #home h3, #home h5 {
-    text-align: center;
-    color: #FFFFFF;
+/* Headings */
+h1, h2, h3 {
+    /* Use Bootstrap's primary text emphasis color */
+    color: var(--bs-primary-text-emphasis);
 }
-/* Specific override for contact page content */
-#contact h1, #contact h5 {
-    text-align: center;
-    color: #FFFFFF;
+/* Override for homepage h1 */
+#home h1 {
+    color: var(--bs-white);
+    /* Custom drop shadow to mimic tailwind */
+    text-shadow: 0 4px 6px rgba(0,0,0,0.4);
+}
+#home p {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 footer {
     background-color: #1F2937;
@@ -226,17 +227,16 @@ footer p {
         margin-right: auto;
         width: 25%;
     }
-	#home {
-            margin-top: 0;
-            margin-bottom: 0;
-            box-shadow: none;
+	/* Home section is special (no top margin) */
+        #home {
             background-image: url('https://moparinsiders.com/wp-content/uploads/2021/06/Chrysler-Pacifica-SRT-Hellcat-Design-by-Abimelec-Designs.-AbimelecDesigns-1-e1648584376623-780x470.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
             overflow: hidden;
-            border-radius: 0.5rem;
+            border-radius: var(--bs-border-radius-lg);
+            /* min-height is set inline */
         }
 
         /* Dark overlay for homepage hero */
@@ -256,6 +256,7 @@ footer p {
             position: relative;
             z-index: 2;
         }
+
 		/* Blog post articles and project cards */
         article, .project-card, .social-card, .contact-card {
             background-color: #374151; /* Darker card (gray-700) */
