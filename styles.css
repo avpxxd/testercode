@@ -172,6 +172,9 @@ footer p {
 		bottom: -25px;
 		left: -25px;
 	}
+	.leftcolumn { width: 95%; }
+    .center { width: 50%; }
+    iframe { width: 100%; height: auto; }
 }
 
 /* COOL BUTTONS */
