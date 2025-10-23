@@ -46,7 +46,7 @@ i {
     position: relative;
 }
 #navbarSupportedContent>ul>li.active>a{
-	color: #1F2937;
+	color: #FFFFFF;
 	background-color: transparent;
 	transition: all 0.7s;
 }
@@ -100,7 +100,7 @@ i {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #FFFFFF;
+    background-color: #1F2937;
 }
 .hori-selector .right:before{
 	bottom: 0;
