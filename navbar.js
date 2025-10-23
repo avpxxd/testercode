@@ -76,3 +76,42 @@ jQuery(document).ready(function($){
 //         }
 //     })
 // });
+
+// --------------Tab-switching function-----------
+    function openCity(evt, cityName) {
+        var i, tabcontent;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        
+        // This part handles the nav-item active class for the animation
+        if(evt && evt.currentTarget) {
+          let navItems = document.querySelectorAll('.nav-item');
+          navItems.forEach(item => item.classList.remove('active'));
+          evt.currentTarget.parentElement.classList.add('active');
+        }
+
+        document.getElementById(cityName).style.display = "block";
+        
+        // We need to call test() after a tab switch to move the selector
+        setTimeout(function(){ test(); }, 10);
+    }
+
+    // New function to handle logo click and navigate to home
+    function navigateToHome(event) {
+        if(event) event.preventDefault();
+        let homeLink = document.querySelector('a[onclick*="\'home\'"]');
+        if (homeLink) {
+             openCity({ currentTarget: homeLink }, 'home');
+        }
+        return false;
+    }
+
+    // Set the default tab to 'home' on initial load, but wait for all assets (like fonts)
+    $(window).on('load', function() {
+        let homeLink = document.querySelector('a[onclick*="\'home\'"]');
+        if (homeLink) {
+            openCity({currentTarget: homeLink}, 'home');
+        }
+    });
