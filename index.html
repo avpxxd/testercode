@@ -5,13 +5,287 @@
   <link rel='stylesheet' href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'>
-  <link rel='stylesheet' href='styles.css'>
   <style>
     body{
 	    font-family: 'Inter', sans-serif;
 	    background-color: #111827;
 		color: #d1d5db;
     }
+    /* NAVBAR */
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+    body{
+	    /* font-family: 'Roboto', sans-serif; */ /* Removed this to allow 'Inter' to apply */
+	    background-color: #111827; /* Changed this to your requested color */
+    }
+    * {
+	    margin: 0;
+	    padding: 0;
+    }
+    i {
+	    margin-right: 10px;
+    }
+    /*----------bootstrap-navbar-css------------*/
+    .navbar-logo{
+	    padding: 5px;
+	    color: #fff;
+    }
+    .navbar-mainbg{
+	    background-color: #1F2937;
+	    padding: 0px;
+    }
+    #navbarSupportedContent{
+	    overflow: hidden;
+	    position: relative;
+    }
+    #navbarSupportedContent ul{
+	    padding: 0px;
+	    margin: 0px;
+    }
+    #navbarSupportedContent ul li a i{
+	    margin-right: 10px;
+    }
+    #navbarSupportedContent li {
+	    list-style-type: none;
+	    float: left;
+    }
+    #navbarSupportedContent ul li a{
+	    color: rgba(255,255,255,1);
+        text-decoration: none;
+        font-size: 15px;
+        display: block;
+        padding: 20px 20px;
+        transition-duration:0.6s;
+	    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        position: relative;
+    }
+    #navbarSupportedContent>ul>li.active>a{
+	    color: #FFFFFF;
+	    background-color: transparent;
+	    transition: all 0.7s;
+    }
+    .hori-selector{
+	    display:inline-block;
+	    position:absolute;
+	    height: 100%;
+	    top: 0px;
+	    left: 0px;
+	    transition-duration:0.6s;
+	    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	    background-color: #111827;
+	    border-top-left-radius: 15px;
+	    border-top-right-radius: 15px;
+	    margin-top: 10px;
+    }
+    .hori-selector .right,
+    .hori-selector .left{
+	    position: absolute;
+	    width: 25px;
+	    height: 25px;
+	    background-color: #111827;
+	    bottom: 10px;
+    }
+    .hori-selector .right{
+	    right: -25px;
+    }
+    .hori-selector .left{
+	    left: -25px;
+    }
+    .hori-selector .right:before,
+    .hori-selector .left:before{
+	    content: '';
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #1F2937;
+    }
+    .hori-selector .right:before{
+	    bottom: 0;
+        right: -25px;
+    }
+    .hori-selector .left:before{
+	    bottom: 0;
+        left: -25px;
+    }
+    .tabcontent {
+        /* display: none; */ /* JS now handles this with d-none */
+        border-radius: var(--bs-border-radius-lg);
+        background-color: #1f2937; /* Darker Gray Background (gray-800) */
+    }
+    /* Headings */
+    h1, h2, h3 {
+        /* Use Bootstrap's primary text emphasis color */
+        color: var(--bs-primary-text-emphasis);
+    }
+    /* Override for homepage h1 */
+    #home h1 {
+        color: var(--bs-white);
+        /* Custom drop shadow to mimic tailwind */
+        text-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    }
+    #home p {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+    footer {
+        background-color: #1F2937;
+        padding: 35px 22px;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    footer p {
+        color: #FFFFFF; /* Ensure footer text is white */
+    }
+    @media(min-width: 992px){
+	    .navbar-expand-custom {
+	        -ms-flex-flow: row nowrap;
+	        flex-flow: row nowrap;
+	        -ms-flex-pack: start;
+	        justify-content: flex-start;
+	    }
+	    .navbar-expand-custom .navbar-nav {
+	        -ms-flex-direction: row;
+	        flex-direction: row;
+	    }
+	    .navbar-expand-custom .navbar-toggler {
+	        display: none;
+	    }
+	    .navbar-expand-custom .navbar-collapse {
+	        display: -ms-flexbox!important;
+	        display: flex!important;
+	        -ms-flex-preferred-size: auto;
+	        flex-basis: auto;
+	    }
+    }
+    @media (max-width: 991px){
+	    #navbarSupportedContent ul li a{
+		    padding: 12px 30px;
+	    }
+	    .hori-selector{
+		    margin-top: 0px;
+		    margin-left: 10px;
+		    border-radius: 0;
+		    border-top-left-radius: 25px;
+		    border-bottom-left-radius: 25px;
+	    }
+	    .hori-selector .left,
+	    .hori-selector .right{
+		    right: 10px;
+	    }
+	    .hori-selector .left{
+		    top: -25px;
+		    left: auto;
+	    }
+	    .hori-selector .right{
+		    bottom: -25px;
+	    }
+	    .hori-selector .left:before{
+		    left: -25px;
+		    top: -25px;
+	    }
+	    .hori-selector .right:before{
+		    bottom: -25px;
+		    left: -25px;
+	    }
+	    .leftcolumn { width: 95%; }
+        .center { width: 50%; }
+        iframe { width: 100%; height: auto; }
+    }
+    /* COOL BUTTONS */
+        .cbutton {
+            align-items: center;
+            background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: #ffffff;
+            display: flex;
+            font-size: 18px;
+            justify-content: center;
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 140px;
+            padding: 8px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 20px auto;
+        }
+        .cbutton:hover {
+            outline: 0;
+        }
+        .cbutton span {
+            background-color: rgb(5, 6, 45);
+            padding: 16px 24px;
+            border-radius: 6px;
+            width: 100%;
+            height: 100%;
+            transition: 300ms;
+        }
+        .cbutton:hover span {
+            background: none;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 25%;
+        }
+	    /* Home section is special (no top margin) */
+            #home {
+                background-image: url('https://moparinsiders.com/wp-content/uploads/2021/06/Chrysler-Pacifica-SRT-Hellcat-Design-by-Abimelec-Designs.-AbimelecDesigns-1-e1648584376623-780x470.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                position: relative;
+                overflow: hidden;
+                border-radius: var(--bs-border-radius-lg);
+                /* min-height is set inline */
+            }
+            /* Dark overlay for homepage hero */
+            #home::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.6); /* 60% black overlay */
+                z-index: 1;
+            }
+            /* Ensure home content is above the overlay */
+            #home > * {
+                position: relative;
+                z-index: 2;
+            }
+		    /* Blog post articles and project cards */
+            .tabcontent .card {
+                background-color: #3B4350; /* User's requested color */
+                border: 1px solid #4b5563; /* gray-600 */
+            }
+            .tabcontent .card h3 {
+                color: #93c5fd; /* light blue-300 */
+            }
+            .tabcontent .card .text-muted {
+                color: #9ca3af !important; /* gray-400 - Overriding Bootstrap's !important */
+            }
+            p, .text-gray-700 {
+                color: #d1d5db; /* gray-300 */
+            }
+            .text-gray-600 {
+                color: #9ca3af; /* gray-400 */
+            }
+		    /* Links within content */
+            a.text-blue-400, a.text-blue-600 {
+                color: #93c5fd; /* blue-300 */
+            }
+            a.text-blue-400:hover, a.text-blue-600:hover {
+                text-decoration: underline;
+            }
   </style>
 </head>
 <body>
@@ -60,44 +334,6 @@
     <!-- ABOUT PAGE -->
     <div id="about" class="tabcontent d-none p-4 p-md-5 rounded-3 shadow-sm mt-5 mb-5">
       <!-- About Us Content -->
-            <div class="mb-5">
-                <h2 class="fs-2 fw-bold mb-4 text-center">About Us</h2>
-                <div class="mx-auto fs-5" style="max-width: 80ch; line-height: 1.7;">
-                    <p>
-                        Here at DamVan, we are full of fun and goofy ideas. We do all kinds of things, from making YouTube Videos to our own Personal Coding Projects.
-                    </p>
-                    <p>
-                        The group consists of 3 original members, but has the occasional special guest: <strong>Andrew (AVPxxd)</strong>, <strong>Dalton (TheLocalAdmin)</strong>, and <strong>Will (Branchy18269)</strong>.
-                    </p>
-                    <p>
-                        We all have our own YouTube channels along with <a href="https://www.youtube.com/@DodgeRamTheCaravan" class="text-primary">The DodgeRamTheCaravan YouTube Channel</a>, and we also have our own GitHub Pages linked in our Socials Page.
-                    </p>
-                    <p>
-                        Our GitHubs are the same names as our Aliases, along with our Online Gaming Account Names. We are always looking for new ideas for games!
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Backstory Content -->
-            <div class="p-4 p-md-5 rounded-3 bg-secondary-bg">
-                <h2 class="fs-2 fw-bold mb-5 text-center">The Emotional Backstory has been Written!</h2>
-                <div class="mx-auto fs-5" style="max-width: 80ch; line-height: 1.7;">
-                    <p>
-                        The story of how DamVan Came to be... is a very interesting one as you'll see.
-                        The story starts in college, Where Will, Dalton, and Andrew got together at the newly opened E-Sports Lounge, where they played games and hatched ideas
-                        for their group endeavors, which eventually turned into, well This! These three men have been through all the
-                        nonesense of anything you might be able to think of, and also have been hosting a Minecraft Server, A fileshare server,
-                        and of course, this website, while working on content for their group Youtube Channel, and then just being young kids
-                        having fun with computers like they always did, but now combinding their briallance together to break the bounds
-                        of technology. Their end goal is to develop a Tech Start-up, and continue to keep the ridiculousness from DamVan.
-                    </p>
-                    <p>
-                        These men are all very talented in their own unique ways, alone...they are easily underestimated, but together, they are unstoppable,
-                        even pulling off a class prank changing all the wallpapers on their classmates computers. These men without a doubt are definitely able to
-                        handle any task that you throw their way with their combined knowledge. Give them a chance and you will not be disappointed.
-                    </p>
-                </div>
-            </div><!-- About Us Content -->
             <div class="mb-5">
                 <h2 class="fs-2 fw-bold mb-4 text-center">About Us</h2>
                 <div class="mx-auto fs-5" style="max-width: 80ch; line-height: 1.7;">
@@ -371,21 +607,143 @@
   <footer>
     <p>&copy; 2025 DamVan | All rights reserved.</p>
   </footer>
-
   <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
   <script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="navbar.js"></script>
+  <script>
+    // ---------Responsive-navbar-active-animation-----------
+    function test(){
+	    var tabsNewAnim = $('#navbarSupportedContent');
+	    var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
+	    var activeItemNewAnim = tabsNewAnim.find('.active');
+	    if (activeItemNewAnim.length === 0) {
+                return; // Stop the function if no active item is found
+            }
+	    var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+	    var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+	    var itemPosNewAnimTop = activeItemNewAnim.position();
+	    var itemPosNewAnimLeft = activeItemNewAnim.position();
+	    $(".hori-selector").css({
+		    "top":itemPosNewAnimTop.top + "px", 
+		    "left":itemPosNewAnimLeft.left + "px",
+		    "height": activeWidthNewAnimHeight + "px",
+		    "width": activeWidthNewAnimWidth + "px"
+	    });
+	    $("#navbarSupportedContent").on("click","li",function(e){
+		    $('#navbarSupportedContent ul li').removeClass("active");
+		    $(this).addClass('active');
+		    var activeWidthNewAnimHeight = $(this).innerHeight();
+		    var activeWidthNewAnimWidth = $(this).innerWidth();
+		    var itemPosNewAnimTop = $(this).position();
+		    var itemPosNewAnimLeft = $(this).position();
+		    $(".hori-selector").css({
+			    "top":itemPosNewAnimTop.top + "px", 
+			    "left":itemPosNewAnimLeft.left + "px",
+			    "height": activeWidthNewAnimHeight + "px",
+			    "width": activeWidthNewAnimWidth + "px"
+		    });
+	    });
+    }
+    $(document).ready(function(){
+	    setTimeout(function(){ test(); });
+    });
+    $(window).on('resize', function(){
+	    setTimeout(function(){ test(); }, 500);
+    });
+    $(".navbar-toggler").click(function(){
+	    $(".navbar-collapse").slideToggle(300);
+	    setTimeout(function(){ test(); });
+    });
+
+
+
+    // --------------add active class-on another-page move----------
+    jQuery(document).ready(function($){
+	    // Get current path and find target link
+	    var path = window.location.pathname.split("/").pop();
+
+	    // Account for home page with empty path
+	    if ( path == '' ) {
+		    path = 'index.html';
+	    }
+
+	    var target = $('#navbarSupportedContent ul li a[href="'+path+'"]');
+	    // Add active class to target link
+	    target.parent().addClass('active');
+    });
+
+
+
+
+    // Add active class on another page linked
+    // ==========================================
+    // $(window).on('load',function () {
+    //     var current = location.pathname;
+    //     console.log(current);
+    //     $('#navbarSupportedContent ul li a').each(function(){
+    //         var $this = $(this);
+    //         // if the current path is like this link, make it active
+    //         if($this.attr('href').indexOf(current) !== -1){
+    //             $this.parent().addClass('active');
+    //             $this.parents('.menu-submenu').addClass('show-dropdown');
+    //             $this.parents('.menu-submenu').parent().addClass('active');
+    //         }else{
+    //             $this.parent().removeClass('active');
+    //         }
+    //     })
+    // });
+
+    // --------------Tab-switching function-----------
+        function openCity(evt, cityName) {
+            var i, tabcontent;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            
+            // Hide all tab content by adding 'd-none'
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.add("d-none");
+                // Special case for home: remove 'd-flex' so 'd-none' can take over
+                if(tabcontent[i].id === 'home') {
+                    tabcontent[i].classList.remove('d-flex');
+                }
+            }
+        
+            // This part handles the nav-item active class for the animation
+            if(evt && evt.currentTarget) {
+                let navItems = document.querySelectorAll('.nav-item');
+                navItems.forEach(item => item.classList.remove('active'));
+                evt.currentTarget.parentElement.classList.add('active');
+            }
+
+            // Show the specific tab content by removing 'd-none'
+            let tabToShow = document.getElementById(cityName);
+            if (tabToShow) {
+                tabToShow.classList.remove("d-none");
+                // Special case for home: it needs 'd-flex' to center content
+                if(cityName === 'home') {
+                    tabToShow.classList.add('d-flex');
+                }
+            }
+        
+            // We need to call test() after a tab switch to move the selector
+            setTimeout(function(){ test(); }, 10);
+        }
+
+        // New function to handle logo click and navigate to home
+        function navigateToHome(event) {
+            if(event) event.preventDefault();
+            let homeLink = document.querySelector('a[onclick*="\'home\'"]');
+            if (homeLink) {
+                openCity({ currentTarget: homeLink }, 'home');
+            }
+            return false;
+        }
+
+        // Set the default tab to 'home' on initial load, but wait for all assets (like fonts)
+        $(window).on('load', function() {
+            let homeLink = document.querySelector('a[onclick*="\'home\'"]');
+            if (homeLink) {
+                openCity({currentTarget: homeLink}, 'home');
+            }
+        });
+  </script>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
