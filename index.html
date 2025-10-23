@@ -1,115 +1,551 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Morris</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>DamVan</title>
+  
+  <!-- External Libraries (Bootstrap & Font Awesome) -->
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'>
+  
+  <!-- Page Icon (Placeholder) -->
+  <link rel="icon" type="image/x-icon" href="picon.png">
+
+  <!-- EMBEDDED STYLES.CSS -->
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+    body{
+        font-family: 'Roboto', sans-serif;
+        background-color: #1D3158;
+    }
+    h1 {
+        color: #FFFFFF;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    h2 {
+        color: #FFFFFF;
+        text-align: center;
+    }
+    h3 {
+        color: #FFFFFF;
+        text-align: center;
+    }
+    h5 {
+        color: #FFFFFF;
+        text-align: center;
+    }
+    p {
+        color:AliceBlue;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    i {
+        margin-right: 10px;
+    }
+    /*----------bootstrap-navbar-css------------*/
+    .navbar-logo{
+        padding: 5px;
+        color: #fff;
+    }
+    .navbar-mainbg{
+        background-color: #FFFFFF;
+        padding: 0px;
+    }
+    #navbarSupportedContent{
+        overflow: hidden;
+        position: relative;
+    }
+    #navbarSupportedContent ul{
+        padding: 0px;
+        margin: 0px;
+    }
+    #navbarSupportedContent ul li a i{
+        margin-right: 10px;
+    }
+    #navbarSupportedContent li {
+        list-style-type: none;
+        float: left;
+    }
+    #navbarSupportedContent ul li a{
+        color: rgba(29,49,88,1);
+        text-decoration: none;
+        font-size: 15px;
+        display: block;
+        padding: 20px 20px;
+        transition-duration:0.6s;
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        position: relative;
+    }
+    #navbarSupportedContent>ul>li.active>a{
+        color: #FFFFFF;
+        background-color: transparent;
+        transition: all 0.7s;
+    }
+    .hori-selector{
+        display:inline-block;
+        position:absolute;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        transition-duration:0.6s;
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        background-color: #1D3158;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        margin-top: 10px;
+    }
+    .hori-selector .right,
+    .hori-selector .left{
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background-color: #1D3158;
+        bottom: 10px;
+    }
+    .hori-selector .right{
+        right: -25px;
+    }
+    .hori-selector .left{
+        left: -25px;
+    }
+    .hori-selector .right:before,
+    .hori-selector .left:before{
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #FFFFFF;
+    }
+    .hori-selector .right:before{
+        bottom: 0;
+        right: -25px;
+    }
+    .hori-selector .left:before{
+        bottom: 0;
+        left: -25px;
+    }
+    .tabcontent {
+      display: none; /* Hide all tabs by default */
+      padding: 12px 12px;
+    }
+    /* Specific override for homepage content */
+    #home h1, #home h3, #home h5 {
+        text-align: center;
+        color: #FFFFFF;
+    }
+    /* Specific override for contact page content */
+    #contact h1, #contact h5 {
+        text-align: center;
+        color: #FFFFFF;
+    }
+    footer {
+        background-color: #000000;
+        padding: 35px 22px;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    footer p {
+        color: #FFFFFF; /* Ensure footer text is white */
+    }
+    /* BLOG PAGE CSS */
+    .leftcolumn {
+        margin: 0 auto;
+        width: 80%;
+    }
+    .card {
+        background-color: #545768;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 8px; /* Added for a modern touch */
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .blogimg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1rem;
+        height: 250px; /* Set a consistent height */
+        width: 100%;
+        object-fit: contain; /* Changed from 'cover' to 'contain' */
+        border-radius: 8px;
+    }
+    iframe {
+        display: block;
+        border-style:none;
+        margin: 20px auto;
+    }
+    /* COOL BUTTONS */
+    .cbutton {
+        align-items: center;
+        background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+        border: 0;
+        border-radius: 8px;
+        box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+        color: #ffffff;
+        display: flex;
+        font-size: 18px;
+        justify-content: center;
+        line-height: 1em;
+        max-width: 100%;
+        min-width: 140px;
+        padding: 8px;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin: 20px auto;
+    }
+    .cbutton:hover {
+        outline: 0;
+    }
+    .cbutton span {
+        background-color: rgb(5, 6, 45);
+        padding: 16px 24px;
+        border-radius: 6px;
+        width: 100%;
+        height: 100%;
+        transition: 300ms;
+    }
+    .cbutton:hover span {
+        background: none;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 25%;
+    }
+    /* --- NEW BLOG HELPER CLASSES --- */
+    .blog-title {
+        text-align: left !important;
+        font-size: 1.75rem;
+        font-weight: bold;
+    }
+    .blog-date {
+        text-align: left !important;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+    .blog-paragraph {
+        text-align: left !important;
+        color: AliceBlue;
+    }
+
+    /* --- RESPONSIVE STYLES --- */
+    @media(min-width: 992px){
+        .navbar-expand-custom {
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+        .navbar-expand-custom .navbar-nav {
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+        .navbar-expand-custom .navbar-toggler {
+            display: none;
+        }
+        .navbar-expand-custom .navbar-collapse {
+            display: -ms-flexbox!important;
+            display: flex!important;
+            -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+        }
+    }
+
+    @media (max-width: 991px){
+        #navbarSupportedContent ul li a{ padding: 12px 30px; }
+        .hori-selector{
+            margin-top: 0px;
+            margin-left: 10px;
+            border-radius: 0;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+        }
+        .hori-selector .left, .hori-selector .right{ right: 10px; }
+        .hori-selector .left{ top: -25px; left: auto; }
+        .hori-selector .right{ bottom: -25px; }
+        .hori-selector .left:before{ left: -25px; top: -25px; }
+        .hori-selector .right:before{ bottom: -25px; left: -25px; }
+        .leftcolumn { width: 95%; }
+        .center { width: 50%; }
+        iframe { width: 100%; height: auto; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="headerdiv">
-            <h1>Project Morris</h1>
-        </div>
-    </header>
-<nav class="menu" id="nav">
-	<span class="nav-item active">
-		<a href="index.html">Search Users</a>
-	</span>
-	<span class="nav-item">
-		<a href="group.html">Search Groups</a>
-	</span>
-	<span class="nav-item">
-		<a href="about.html">About</a>
-	</span>
-	<span class="nav-item">
-		<a href="apiPage.html">API Info</a>
-	</span>
-	<span class="nav-item">
-		<a href="lizard.html">Extras</a>
-	</span>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="#" onclick="return navigateToHome(event);">
+      <img src="logo.png" alt="DamVan Logo Placeholder" height="50">
+    </a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars text-black"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+            <li class="nav-item active">
+                <a class="nav-link" href="javascript:void(0);" onclick="openCity(event, 'home')"><i class="fas fa-home"></i>Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);" onclick="openCity(event, 'about')"><i class="fas fa-users"></i>About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);" onclick="openCity(event, 'blog')"><i class="far fa-newspaper"></i>Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);" onclick="openCity(event, 'stuff')"><i class="fas fa-satellite"></i>Cool Stuff</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);" onclick="openCity(event, 'socials')"><i class="fas fa-mobile-alt"></i>Our Socials</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);" onclick="openCity(event, 'contact')"><i class="fas fa-paper-plane"></i>Contact Us</a>
+            </li>
+        </ul>
+    </div>
 </nav>
-    <main>
-        <section>
-            <h3>WARNING this tool has been known to find some pretty nasty results! If you do not want to see them do NOT continue!</h3>
-            <form method="post" class="formmorris">
-                <input name="query" type="text" class="textareamorris"
-                 placeholder="Enter a description, username, or userid." value="{{ search_query or '' }}">
-                <button class="buttonmorris" type="submit" name="action" value="search">Submit</button>
-                <button class="buttonmorris" type="submit" name="action" value="recent">Recent</button>
-            </form>
+      <!-- HOMEPAGE -->
+    <div id="home" class="tabcontent">
+      <h1>Welcome To The Damn(Van) Website!</h1>
+      <h3>This is the offical website for DodgeRamTheCaravan (DamVan)</h3>
+      <img src="logo.png" alt="DamVan Logo Placeholder" class="center">
+      <h5>
+        Here at DamVan, we are full of fun and goofy ideas, we do all kinds of things, from Make YouTube Videos, to our own Personal Coding Projects<br>
+        The group consists between 3 original members, but has the occasional special guest, Andrew (AVPxxd), Dalton (TheLocalAdmin), and Will (Branchy18269)<br>
+        We all have our own YouTube channels along with <a href="https://www.youtube.com/channel/UCRymAny4_qwkdYAuBawqQjQ" style="color: #00ddeb;">The DodgeRamTheCaravan YouTube Channel</a>, we also have our own GitHub Pages linked in our Socials Page<br>
+        Our GitHubs are the same names as our Alias' along with our Online Gaming Account Names, and we are always looking for new ideas for games. <br>
+        Feel free to contact us in the Contact Us page or at contact@damvan.ca
+      </h5>
+    </div>
+  
+      <!-- ABOUT PAGE -->
+    <div id="about" class="tabcontent">
+      <h1>The Emotional Backstory has been Written!</h1>
+      <h5>
+        The story of how DamVan Came to be... is a very interesting one as you'll see. <br>
+        The story starts in college, Where Will, Dalton, and Andrew got together at the newly opened E-Sports Lounge, where they played games and hatched ideas <br>
+        for their group endeavors, which eventually turned into, well This! These three men have been through all the<br>
+        nonesense of anything you might be able to think of, and also have been hosting a Minecraft Server, A fileshare server, <br>
+        and of course, this website, while working on content for their group Youtube Channel, and then just being young kids <br>
+        having fun with computers like they always did, but now combinding their briallance together to break the bounds<br>
+        of technology. Their end goal is to develop a Tech Start-up, and continue to keep the ridiculousness from DamVan. <br>
+        These men are all very taletned in their own unique ways, alone...they are easily underestimated, but together, they are unstoppable, <br>
+        even pulling off a class prank changing all the wallpapers on their classmates computers. These men without a doubt are definitely able to<br>
+        handle any task that you throw their way with their combined knowledge. Give them a chance and you will not be disappointed.
+      </h5>
+    </div>
 
-            <div class="outputmorris">
-                {% if error %}
-                    <p class="error">{{ error }}</p>
-                {% endif %}
-
-                {% if users is defined %}
-                    {% if users %}
-                        <h3>{{ result_title }}</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>User ID</th>
-                                    <th>Username</th>
-                                    <th>Display Name</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for user in users %}
-                                <tr>
-                                    <td>{{ user.user_id }}</td>
-                                    <td>{{ user.username }}</td>
-                                    <td>{{ user.display_name }}</td>
-                                    <td >{{ user.description or 'N/A' }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-
-                        {% if user_groups %}
-                            <h3>Known Group Memberships</h3>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Group ID</th>
-                                        <th>Group Name</th>
-                                        <th>Member Count</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for group in user_groups %}
-                                    <tr>
-                                        <td>{{ group.group_id }}</td>
-                                        <td>{{ group.group_name }}</td>
-                                        <td>{{ "{:,}".format(group.member_count) if group.member_count else 'N/A' }}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        {% endif %}
-
-                    {% elif result_title %}
-                        <p>{{ result_title }}</p>
-                    {% endif %}
-                {% endif %}
+      <!-- BLOG PAGE (NEW DESIGN) -->
+    <div id="blog" class="tabcontent">
+      <h1>DamVan Blog!</h1>
+        <div class="row">
+          <div class="leftcolumn">
+            
+            <!-- Blog Post 1 -->
+            <div class="card">
+                <img src="BlogNewStuff.png" alt="New Stuff Image Placeholder" class="blogimg">
+                <h2 class="blog-title">New Stuff!</h2>
+                <h5 class="blog-date">October 6, 2025</h5>
+                <p class="blog-paragraph">
+                  Another project has been added to the Cool Stuff section! Be sure to go check it out. We're excited to share more fun projects with you all soon.
+                </p>
             </div>
-        </section>
-    </main>
-    <footer>
-        <p class="footermorris">Project Morris created by Mater. Not affiliated with Roblox Corp</p>
-        <p><img src="/static/logo.png" width="50" height="50" alt="site logo"></p>
-    </footer>
+            
+            <!-- Blog Post 2 -->
+            <div class="card">
+                <img src="logo.png" alt="Website V0.2 Placeholder" class="blogimg">
+                <h2 class="blog-title">Website V0.2!</h2>
+                <h5 class="blog-date">August 20, 2025</h5>
+                <p class="blog-paragraph">
+                  The website is finally starting to come together! Though it's still a bit buggy and missing some content, we've made a lot of progress. We also published our first lil fun project in the Cool Stuff section!
+                </p>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="card">
+                <img src="logo.png" alt="Website Launch Placeholder" class="blogimg">
+                <h2 class="blog-title">The Website Launches!</h2>
+                <h5 class="blog-date">July 14, 2025</h5>
+                <p class="blog-paragraph">
+                  The website has launched today! (Or technically yesterday, as it took a day to get the blog page up and running!) We hope to provide some awesome content very (very) soon!
+                </p>
+            </div>
+            
+            <!-- 
+            ==================================================================
+            === NEW BLOG POST TEMPLATE =======================================
+            ================================="=================================
+            To add a new blog post, copy the <div class="card"> block below 
+            and paste it at the top, right under the <div class="leftcolumn">
+            ==================================================================
+            
+            <div class="card">
+                <img src="https://placehold.co/800x400/545768/FFFFFF?text=Your+Image" alt="A descriptive alt text" class="blogimg">
+                <h2 class="blog-title">Your New Blog Post Title</h2>
+                <h5 class="blog-date">Month Day, 20XX</h5>
+                <p class="blog-paragraph">
+                    This is a small paragraph for your new blog post. Write a short, engaging summary of what the article is about here.
+                </p>
+            </div>
+
+            -->
+
+          </div>
+        </div>
+    </div>
+
+        <!-- COOL STUFF PAGE -->
+    <div id="stuff" class="tabcontent">
+        <h1>Our Fun Projects</h1>
+        <div class="row">
+          <div class="leftcolumn">
+            <div class="card">
+              <h2>BeatNinja</h2>
+              <img src="BeatNinja.png" alt="BeatNinja Logo Placeholder" class="blogimg">
+              <p style="text-align: center;">A Mix Between Fruit Ninja, And Beat Saber... Sorta.</p>
+              <button class="cbutton" onclick="window.open('https://avpxxd.github.io/BeatNinja/', '_blank');"><span>Play Game</span></button>
+            </div>
+            <div class="card">
+              <h2>I Am Not A Human</h2>
+              <img src="imnotahuman.png" alt="iamnotahuman Placeholder" class="blogimg">
+              <p style="text-align: center;">Alternate Universe Captchas Are Designed To Keep Us Out!</p>
+              <button class="cbutton" onclick="window.open('https://avpxxd.github.io/codespace/', '_blank');"><span>Check it out!</span></button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+        <!-- SOCIAL MEDIA PAGE -->
+    <div id="socials" class="tabcontent">
+      <h1><i class="fab fa-youtube"></i> Our Youtube Channel!</h1>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/_-AxdL-urGE?si=enyeBzThsQuj6l-m" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <button class="cbutton" onclick="window.open('https://www.youtube.com/@DodgeRamTheCaravan', '_blank');"><i class="fab fa-youtube"></i><span>Subscribe!</span></button>
+      
+      <h1><i class="fab fa-discord"></i> Join Our Discord!</h1>
+      <button class="cbutton" onclick="window.open('https://discord.damvan.ca/', '_blank');"><i class="fab fa-discord"></i><span>DamVan Discord</span></button>
+    </div>
+
+        <!-- CONTACT US PAGE -->
+    <div id="contact" class="tabcontent">
+      <h1><i class="fas fa-user-secret"></i> Overcoming Social Anxiety...</h1>
+      <h5>This page is under construction!</h5>
+    </div>
+  
+<!-- PAGE FOOTER -->
+<footer>
+    <p>&copy; 2025 DamVan | All rights reserved.</p>
+</footer>
+
+<!-- EMBEDDED SCRIPT.JS -->
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js'></script>
+<script>
+    // ---------Responsive-navbar-active-animation-----------
+    function test(){
+        var tabsNewAnim = $('#navbarSupportedContent');
+        var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
+        var activeItemNewAnim = tabsNewAnim.find('.active');
+        
+        // ERROR FIX: Check if an active item exists before trying to get its properties.
+        if (activeItemNewAnim.length === 0) {
+            return; // Stop the function if no active item is found
+        }
+        
+        var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+        var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+        var itemPosNewAnimTop = activeItemNewAnim.position();
+        var itemPosNewAnimLeft = activeItemNewAnim.position();
+        
+        $(".hori-selector").css({
+            "top":itemPosNewAnimTop.top + "px", 
+            "left":itemPosNewAnimLeft.left + "px",
+            "height": activeWidthNewAnimHeight + "px",
+            "width": activeWidthNewAnimWidth + "px"
+        });
+        $("#navbarSupportedContent").on("click","li",function(e){
+            $('#navbarSupportedContent ul li').removeClass("active");
+            $(this).addClass('active');
+            var activeWidthNewAnimHeight = $(this).innerHeight();
+            var activeWidthNewAnimWidth = $(this).innerWidth();
+            var itemPosNewAnimTop = $(this).position();
+            var itemPosNewAnimLeft = $(this).position();
+            $(".hori-selector").css({
+                "top":itemPosNewAnimTop.top + "px", 
+                "left":itemPosNewAnimLeft.left + "px",
+                "height": activeWidthNewAnimHeight + "px",
+                "width": activeWidthNewAnimWidth + "px"
+            });
+        });
+    }
+
+    $(window).on('resize', function(){
+        setTimeout(function(){ test(); }, 500);
+    });
+
+    $(".navbar-toggler").click(function(){
+        $(".navbar-collapse").slideToggle(300);
+        setTimeout(function(){ test(); });
+    });
+
+    // --------------Tab-switching function-----------
+    function openCity(evt, cityName) {
+        var i, tabcontent;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        
+        // This part handles the nav-item active class for the animation
+        if(evt && evt.currentTarget) {
+          let navItems = document.querySelectorAll('.nav-item');
+          navItems.forEach(item => item.classList.remove('active'));
+          evt.currentTarget.parentElement.classList.add('active');
+        }
+
+        document.getElementById(cityName).style.display = "block";
+        
+        // We need to call test() after a tab switch to move the selector
+        setTimeout(function(){ test(); }, 10);
+    }
+
+    // New function to handle logo click and navigate to home
+    function navigateToHome(event) {
+        if(event) event.preventDefault();
+        let homeLink = document.querySelector('a[onclick*="\'home\'"]');
+        if (homeLink) {
+             openCity({ currentTarget: homeLink }, 'home');
+        }
+        return false;
+    }
+
+    // Set the default tab to 'home' on initial load, but wait for all assets (like fonts)
+    $(window).on('load', function() {
+        let homeLink = document.querySelector('a[onclick*="\'home\'"]');
+        if (homeLink) {
+            openCity({currentTarget: homeLink}, 'home');
+        }
+    });
+</script>
+
 </body>
 </html>
-
-
-
-
-
 
