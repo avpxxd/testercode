@@ -3,6 +3,9 @@ function test(){
 	var tabsNewAnim = $('#navbarSupportedContent');
 	var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
 	var activeItemNewAnim = tabsNewAnim.find('.active');
+	if (activeItemNewAnim.length === 0) {
+            return; // Stop the function if no active item is found
+        }
 	var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
 	var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
 	var itemPosNewAnimTop = activeItemNewAnim.position();
