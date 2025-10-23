@@ -627,49 +627,8 @@
   <script>
 	// Function to copy IP to clipboard
         function copyIp() {
-            const ip = 'playmc.damvan.ca';
-            // Use execCommand as a fallback for clipboard API
-            const textArea = document.createElement('textarea');
-            textArea.value = ip;
-            textArea.style.position = 'fixed'; // Prevent scrolling to bottom of page in MS Edge.
-            textArea.style.top = 0;
-            textArea.style.left = 0;
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            
-            let successful = false;
-            try {
-                successful = document.execCommand('copy');
-            } catch (err) {
-                console.error('Fallback: Oops, unable to copy', err);
-            }
-            document.body.removeChild(textArea);
-
-            // Show feedback
-            const feedback = document.getElementById('copy-ip-feedback');
-            const button = document.getElementById('copy-ip-button');
-            
-            // Clear previous states
-            feedback.classList.remove('text-success', 'text-danger');
-            button.classList.remove('btn-success-subtle'); // Use a subtle class
-
-            if (successful) {
-                feedback.textContent = 'Copied!';
-                feedback.classList.add('text-success');
-                button.classList.add('btn-success-subtle'); // Add subtle success feedback
-            } else {
-                feedback.textContent = 'Failed to copy';
-                feedback.classList.add('text-danger');
-            }
-            
-            // Clear feedback after 2 seconds
-            setTimeout(() => {
-                feedback.textContent = '';
-                feedback.classList.remove('text-success', 'text-danger');
-                button.classList.remove('btn-success-subtle');
-            }, 2000);
-        }
+            navigator.clipboard.writeText("playmc.damvan.ca");
+			alert("Copied Server IP.");
     // ---------Responsive-navbar-active-animation-----------
     function test(){
 	    var tabsNewAnim = $('#navbarSupportedContent');
@@ -806,5 +765,6 @@
         });
   </script>
 </body>
+
 
 
