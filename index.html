@@ -53,10 +53,11 @@
         background-color: #1f2937; /* changed from #FFFFFF to dark gray */
         padding: 0px;
     }
-    /* ensure nav links are light on the dark navbar */
+    /* ensure nav links are light on the dark navbar (important) */
     .navbar-mainbg .nav-link {
         color: #d1d5db !important;
     }
+
     #navbarSupportedContent{
         overflow: hidden;
         position: relative;
@@ -72,8 +73,9 @@
         list-style-type: none;
         float: left;
     }
+    /* Make the anchor text readable and ensure it's above the selector */
     #navbarSupportedContent ul li a{
-        color: rgba(29,49,88,1);
+        color: #d1d5db !important; /* changed from dark color to light so links show */
         text-decoration: none;
         font-size: 15px;
         display: block;
@@ -81,6 +83,7 @@
         transition-duration:0.6s;
         transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         position: relative;
+        z-index: 2; /* keep links above the hori-selector */
     }
     #navbarSupportedContent>ul>li.active>a{
         color: #FFFFFF;
@@ -99,6 +102,8 @@
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
         margin-top: 10px;
+        pointer-events: none; /* allow clicks to pass through to links */
+        z-index: 0; /* keep the selector behind the nav items */
     }
     .hori-selector .right,
     .hori-selector .left{
@@ -335,7 +340,7 @@
       <img src="logo.png" alt="DamVan Logo Placeholder" height="50">
     </a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars text-black"></i>
+      <i class="fas fa-bars text-white"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Move the selector out of the UL (UL should only have LI children) -->
@@ -382,10 +387,10 @@
                   Here at DamVan, we are full of fun and goofy ideas. We do all kinds of things, from making YouTube Videos to our own Personal Coding Projects.
               </p>
               <p>
-                  The group consists of 3 original members, but has the occasional special guest: <strong>Andrew (AVPxxd)</strong>, <strong>Dalton (TheLocalAdmin)</strong>, and <strong>Will (Branchy18269)</strong>.
+                  The group consists of 3 original members, but has the occasional special guest: <strong>Andrew (AVPxxd)</strong>, <strong>Dalton (TheLocalAdmin)</strong>, and <strong>Will (Branchy18[...]
               </p>
               <p>
-                  We all have our own YouTube channels along with <a href="https://www.youtube.com/@DodgeRamTheCaravan" class="text-blue-400 hover:underline">The DodgeRamTheCaravan YouTube Channel</a>, and we also have our own GitHub Pages linked in our Socials Page.
+                  We all have our own YouTube channels along with <a href="https://www.youtube.com/@DodgeRamTheCaravan" class="text-blue-400 hover:underline">The DodgeRamTheCaravan YouTube Channel</a>[...]
               </p>
               <p>
                   Our GitHubs are the same names as our Aliases, along with our Online Gaming Account Names. We are always looking for new ideas for games!
@@ -435,7 +440,7 @@
                     <h3 class="text-2xl font-semibold text-blue-300 mb-2">We've Hit Version 1.0!</h3>
                     <p class="text-sm text-gray-400 mb-3">October 22, 2025</p>
                     <p class="leading-relaxed">
-                        It's official! We're calling this Version 1.0 of the DamVan website. All the core pages are up, the new dark theme is solid, the pesky social logos are finally fixed, and all the links are working. We're proud to have this as our official "complete" site. Thanks for following along!
+                        It's official! We're calling this Version 1.0 of the DamVan website. All the core pages are up, the new dark theme is solid, the pesky social logos are finally fixed, and all t[...]
                     </p>
                 </article>
 
@@ -452,7 +457,7 @@
                     <h3 class="text-2xl font-semibold text-blue-300 mb-2">Website V0.2!</h3>
                     <p class="text-sm text-gray-400 mb-3">August 20, 2025</p>
                     <p class="leading-relaxed">
-                        The website is finally starting to come together! Though it's still a bit buggy and missing some content, we've made a lot of progress. We also published our first lil fun project in the Cool Stuff section!
+                        The website is finally starting to come together! Though it's still a bit buggy and missing some content, we've made a lot of progress. We also published our first lil fun proj[...]
                     </p>
                 </article>
 
@@ -511,7 +516,7 @@
                 <div class="social-card p-6 rounded-lg shadow-lg text-center flex flex-col items-center">
                     <!-- Icon -->
                     <svg class="w-20 h-20 text-red-500 mb-4" viewBox="0 0 28 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M27.348 3.09C27.022 1.86 26.04 0.878 24.81 0.552C22.628 0 14 0 14 0C14 0 5.372 0 3.19 0.552C1.96 0.878 0.978 1.86 0.652 3.09C0 5.272 0 10 0 10C0 10 0 14.728 0.652 16.91C0.978 18.14 1.96 19.122 3.19 19.448C5.372 20 14 20 14 20C14 20 22.628 20 24.81 19.448C26.04 19.122 26.978 18.14 27.348 16.91C28 14.728 28 10 28 10C28 10 28 5.272 27.348 3.09ZM11.2 14.286V5.714L18.48 10L11.2 14.286Z"/>
+                        <path d="M27.348 3.09C27.022 1.86 26.04 0.878 24.81 0.552C22.628 0 14 0 14 0C14 0 5.372 0 3.19 0.552C1.96 0.878 0.978 1.86 0.652 3.09C0 5.272 0 10 0 10C0 10 0 14.728 0.652 16.9[...]
                     </svg>
                     <h3 class="text-2xl font-semibold mb-2">YouTube</h3>
                     <p class="leading-relaxed mb-4 flex-grow">
@@ -526,7 +531,7 @@
                 <div class="social-card p-6 rounded-lg shadow-lg text-center flex flex-col items-center">
                     <!-- Icon -->
                     <!-- Replaced SVG with a reliable, white PNG logo for dark mode -->
-                    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6cc3c481a15a141738_icon_clyde_white_RGB.png" alt="Discord Logo" class="w-20 h-20 mb-4 object-contain">
+                    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6cc3c481a15a141738_icon_clyde_white_RGB.png" alt="Discord Logo" class="w-20 h-20 mb-4 object-contai[...]
                     <h3 class="text-2xl font-semibold mb-2">Discord</h3>
                     <p class="leading-relaxed mb-4 flex-grow">
                         Join our community Discord server to hang out, chat, and get project updates.
@@ -626,11 +631,11 @@
     function test(){
         var tabsNewAnim = $('#navbarSupportedContent');
         var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
-        var activeItemNewAnim = tabsNewAnim.find('.active');
+        var activeItemNewAnim = tabsNewAnim.find('li.active');
         
-        // ERROR FIX: Check if an active item exists before trying to get its properties.
+        // If no active item, do nothing (avoid errors)
         if (activeItemNewAnim.length === 0) {
-            return; // Stop the function if no active item is found
+            return;
         }
         
         var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
@@ -677,34 +682,70 @@
             tabcontent[i].style.display = "none";
         }
         
-        // This part handles the nav-item active class for the animation
-        if(evt && evt.currentTarget) {
-          let navItems = document.querySelectorAll('.nav-item');
-          navItems.forEach(item => item.classList.remove('active'));
-          evt.currentTarget.parentElement.classList.add('active');
+        // Find the clicked anchor in a robust way
+        var clickedLink = null;
+        if (evt && evt.currentTarget) {
+            clickedLink = evt.currentTarget;
+        } else if (evt && evt.target) {
+            clickedLink = evt.target;
+        } else if (evt && evt instanceof Element) {
+            clickedLink = evt;
         }
 
-        document.getElementById(cityName).style.display = "block";
+        // If the clicked element is inside the anchor, climb to the anchor
+        if (clickedLink && clickedLink.tagName !== 'A') {
+            var possibleAnchor = clickedLink.closest ? clickedLink.closest('a') : null;
+            if (possibleAnchor) clickedLink = possibleAnchor;
+        }
+
+        // If we still don't have the link, try to locate it by the onclick attribute matching the cityName
+        if (!clickedLink) {
+            var selector = "a[onclick*=\"" + cityName + "\"]";
+            clickedLink = document.querySelector(selector);
+        }
+
+        // Update active classes
+        if (clickedLink) {
+            var navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            var parentLi = clickedLink.closest ? clickedLink.closest('li') : clickedLink.parentElement;
+            if (parentLi) parentLi.classList.add('active');
+        }
+
+        // Show the requested tab content if it exists
+        var content = document.getElementById(cityName);
+        if (content) {
+            content.style.display = "block";
+        } else {
+            console.warn("openCity: No element found with id '" + cityName + "'");
+        }
         
-        // We need to call test() after a tab switch to move the selector
+        // Call the selector animation after a short delay
         setTimeout(function(){ test(); }, 10);
     }
 
     // New function to handle logo click and navigate to home
     function navigateToHome(event) {
         if(event) event.preventDefault();
-        let homeLink = document.querySelector('a[onclick*="\'home\'"]');
+        // Try to find the Home link and trigger openCity using it
+        var homeLink = document.querySelector('a[onclick*="\'home\'"], a[onclick*="home"]');
         if (homeLink) {
              openCity({ currentTarget: homeLink }, 'home');
+        } else {
+             // Fallback: directly show the home element
+             openCity(null, 'home');
         }
         return false;
     }
 
-    // Set the default tab to 'home' on initial load, but wait for all assets (like fonts)
+    // Set the default tab to 'home' on initial load
     $(window).on('load', function() {
-        let homeLink = document.querySelector('a[onclick*="\'home\'"]');
+        var homeLink = document.querySelector('a[onclick*="\'home\'"], a[onclick*="home"]');
         if (homeLink) {
             openCity({currentTarget: homeLink}, 'home');
+        } else {
+            // fallback: directly open by id
+            openCity(null, 'home');
         }
     });
     // Function to copy IP to clipboard
@@ -744,7 +785,6 @@
             }
         }
 </script>
-
 </body>
 </html>
 
