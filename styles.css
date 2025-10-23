@@ -98,6 +98,11 @@ i {
 .tabcontent {
     display: none; /* Hide all tabs by default */
     padding: 12px 12px;
+	margin-top: 4rem;
+    margin-bottom: 4rem;
+    background-color: #1f2937; /* Darker Gray Background (gray-800) */
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Darker shadow */
 }
 /* Specific override for homepage content */
 #home h1, #home h3, #home h5 {
@@ -250,4 +255,28 @@ footer p {
         #home > * {
             position: relative;
             z-index: 2;
+        }
+		/* Blog post articles and project cards */
+        article, .project-card, .social-card, .contact-card {
+            background-color: #374151; /* Darker card (gray-700) */
+            border: 1px solid #4b5563; /* gray-600 */
+        }
+        article h3, .project-card h3, .social-card h3, .contact-card h3 {
+            color: #93c5fd; /* light blue-300 */
+        }
+        article p.text-sm, .project-card p.text-sm, .social-card p.text-sm, .contact-card p.text-sm {
+            color: #9ca3af; /* gray-400 */
+        }
+        p, .text-gray-700 {
+            color: #d1d5db; /* gray-300 */
+        }
+        .text-gray-600 {
+            color: #9ca3af; /* gray-400 */
+        }
+		/* Links within content */
+        a.text-blue-400, a.text-blue-600 {
+            color: #93c5fd; /* blue-300 */
+        }
+        a.text-blue-400:hover, a.text-blue-600:hover {
+            text-decoration: underline;
         }
