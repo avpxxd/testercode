@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>DamVan</title>
-  
+  <script src="https://cdn.tailwindcss.com"></script>
   <!-- External Libraries (Bootstrap & Font Awesome) -->
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'>
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Page Icon (Placeholder) -->
   <link rel="icon" type="image/x-icon" href="picon.png">
 
@@ -17,22 +17,18 @@
     @import url('https://fonts.googleapis.com/css?family=Roboto');
 
     body{
-        font-family: 'Roboto', sans-serif;
-        background-color: #1D3158;
+        font-family: 'Inter', sans-serif;
+        background-color: #111827; /* Dark Navy Background (gray-900) */
+        color: #d1d5db; /* Light gray text (gray-300) */
     }
-    h1 {
-        color: #FFFFFF;
-        text-align: center;
-        padding-top: 20px;
-        padding-bottom: 10px;
+    /* Headings */
+    h1, h2, h3 {
+        color: #93c5fd; /* Light Blue (blue-300) */
     }
-    h2 {
-        color: #FFFFFF;
-        text-align: center;
+    /* Override for homepage h1 */
+    #home h1 {
+        color: #ffffff; /* White for hero */
     }
-    h3 {
-        color: #FFFFFF;
-        text-align: center;
     }
     h5 {
         color: #FFFFFF;
@@ -230,22 +226,6 @@
         margin-right: auto;
         width: 25%;
     }
-    /* --- NEW BLOG HELPER CLASSES --- */
-    .blog-title {
-        text-align: left !important;
-        font-size: 1.75rem;
-        font-weight: bold;
-    }
-    .blog-date {
-        text-align: left !important;
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-    }
-    .blog-paragraph {
-        text-align: left !important;
-        color: AliceBlue;
-    }
-
     /* --- RESPONSIVE STYLES --- */
     @media(min-width: 992px){
         .navbar-expand-custom {
@@ -287,6 +267,62 @@
         .center { width: 50%; }
         iframe { width: 100%; height: auto; }
     }
+    /* Header and Footer adjusted for new theme */
+      header, footer {
+          background-color: #1f2937; /* Dark Gray (gray-800) */
+          color: #d1d5db; /* Light gray text (gray-300) */
+          border-bottom: 1px solid #374151; /* gray-700 */
+      }
+      footer {
+          border-top: 1px solid #374151; /* gray-700 */
+      }
+      /* Blog post articles and project cards */
+      article, .project-card, .social-card, .contact-card {
+          background-color: #374151; /* Darker card (gray-700) */
+          border: 1px solid #4b5563; /* gray-600 */
+      }
+      article h3, .project-card h3, .social-card h3, .contact-card h3 {
+          color: #93c5fd; /* light blue-300 */
+      }
+      article p.text-sm, .project-card p.text-sm, .social-card p.text-sm, .contact-card p.text-sm {
+          color: #9ca3af; /* gray-400 */
+      }
+      p, .text-gray-700 {
+          color: #d1d5db; /* gray-300 */
+      }
+      .text-gray-600 {
+          color: #9ca3af; /* gray-400 */
+      }
+      /* Home section is special (no top margin) */
+      #home {
+          margin-top: 0;
+          margin-bottom: 0;
+          box-shadow: none;
+          background-image: url('https://moparinsiders.com/wp-content/uploads/2021/06/Chrysler-Pacifica-SRT-Hellcat-Design-by-Abimelec-Designs.-AbimelecDesigns-1-e1648584376623-780x470.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          position: relative;
+          overflow: hidden;
+          border-radius: 0.5rem;
+      }
+
+      /* Dark overlay for homepage hero */
+      #home::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.6); /* 60% black overlay */
+          z-index: 1;
+      }
+      /* Ensure home content is above the overlay */
+      #home > * {
+          position: relative;
+          z-index: 2;
+      }
   </style>
 </head>
 <body>
@@ -324,135 +360,257 @@
 </nav>
       <!-- HOMEPAGE -->
     <div id="home" class="tabcontent">
-      <h1>Welcome To The Damn(Van) Website!</h1>
-      <h3>This is the offical website for DodgeRamTheCaravan (DamVan)</h3>
-      <img src="logo.png" alt="DamVan Logo Placeholder" class="center">
-      <h5>
-        Here at DamVan, we are full of fun and goofy ideas, we do all kinds of things, from Make YouTube Videos, to our own Personal Coding Projects<br>
-        The group consists between 3 original members, but has the occasional special guest, Andrew (AVPxxd), Dalton (TheLocalAdmin), and Will (Branchy18269)<br>
-        We all have our own YouTube channels along with <a href="https://www.youtube.com/channel/UCRymAny4_qwkdYAuBawqQjQ" style="color: #00ddeb;">The DodgeRamTheCaravan YouTube Channel</a>, we also have our own GitHub Pages linked in our Socials Page<br>
-        Our GitHubs are the same names as our Alias' along with our Online Gaming Account Names, and we are always looking for new ideas for games. <br>
-        Feel free to contact us in the Contact Us page or at contact@damvan.ca
-      </h5>
+      <h1 class="text-4xl md:text-6xl font-bold text-white drop-shadow-lg mb-4 leading-tight">
+          Welcome To The <span class="text-blue-300">Damn(Van)</span> Website!
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-200 drop-shadow-md font-light">
+          This is the official website for DodgeRamTheCaravan (DamVan)
+      </p>
     </div>
   
       <!-- ABOUT PAGE -->
     <div id="about" class="tabcontent">
-      <h1>The Emotional Backstory has been Written!</h1>
-      <h5>
-        The story of how DamVan Came to be... is a very interesting one as you'll see. <br>
-        The story starts in college, Where Will, Dalton, and Andrew got together at the newly opened E-Sports Lounge, where they played games and hatched ideas <br>
-        for their group endeavors, which eventually turned into, well This! These three men have been through all the<br>
-        nonesense of anything you might be able to think of, and also have been hosting a Minecraft Server, A fileshare server, <br>
-        and of course, this website, while working on content for their group Youtube Channel, and then just being young kids <br>
-        having fun with computers like they always did, but now combinding their briallance together to break the bounds<br>
-        of technology. Their end goal is to develop a Tech Start-up, and continue to keep the ridiculousness from DamVan. <br>
-        These men are all very taletned in their own unique ways, alone...they are easily underestimated, but together, they are unstoppable, <br>
-        even pulling off a class prank changing all the wallpapers on their classmates computers. These men without a doubt are definitely able to<br>
-        handle any task that you throw their way with their combined knowledge. Give them a chance and you will not be disappointed.
-      </h5>
+      <div class="mb-16">
+          <h2 class="text-3xl font-bold mb-6 text-center">About Us</h2>
+          <div class="max-w-4xl mx-auto text-lg space-y-6 leading-relaxed">
+              <p>
+                  Here at DamVan, we are full of fun and goofy ideas. We do all kinds of things, from making YouTube Videos to our own Personal Coding Projects.
+              </p>
+              <p>
+                  The group consists of 3 original members, but has the occasional special guest: <strong>Andrew (AVPxxd)</strong>, <strong>Dalton (TheLocalAdmin)</strong>, and <strong>Will (Branchy18269)</strong>.
+              </p>
+              <p>
+                  We all have our own YouTube channels along with <a href="https://www.youtube.com/@DodgeRamTheCaravan" class="text-blue-400 hover:underline">The DodgeRamTheCaravan YouTube Channel</a>, and we also have our own GitHub Pages linked in our Socials Page.
+              </p>
+              <p>
+                  Our GitHubs are the same names as our Aliases, along with our Online Gaming Account Names. We are always looking for new ideas for games!
+              </p>
+          </div>
+      </div>
+      <div class="p-8 md:p-12 rounded-lg bg-gray-700">
+          <h2 class="text-3xl font-bold mb-8 text-center">The Emotional Backstory has been Written!</h2>
+          <div class="max-w-4xl mx-auto text-lg space-y-6 leading-relaxed">
+              <p>
+                  The story of how DamVan Came to be... is a very interesting one as you'll see.
+                  The story starts in college, Where Will, Dalton, and Andrew got together at the newly opened E-Sports Lounge, where they played games and hatched ideas
+                  for their group endeavors, which eventually turned into, well This! These three men have been through all the
+                  nonesense of anything you might be able to think of, and also have been hosting a Minecraft Server, A fileshare server,
+                  and of course, this website, while working on content for their group Youtube Channel, and then just being young kids
+                  having fun with computers like they always did, but now combinding their briallance together to break the bounds
+                  of technology. Their end goal is to develop a Tech Start-up, and continue to keep the ridiculousness from DamVan.
+              </p>
+              <p>
+                  These men are all very talented in their own unique ways, alone...they are easily underestimated, but together, they are unstoppable,
+                  even pulling off a class prank changing all the wallpapers on their classmates computers. These men without a doubt are definitely able to
+                  handle any task that you throw their way with their combined knowledge. Give them a chance and you will not be disappointed.
+              </p>
+          </div>
+      </div>
     </div>
 
       <!-- BLOG PAGE (NEW DESIGN) -->
     <div id="blog" class="tabcontent">
-      <h1>DamVan Blog!</h1>
-        <div class="row">
-          <div class="leftcolumn">
+      <h2 class="text-3xl font-bold mb-8 text-center">DamVan Blog!</h2>
             
-            <!-- Blog Post 1 -->
-            <div class="card">
-                <img src="BlogNewStuff.png" alt="New Stuff Image Placeholder" class="blogimg">
-                <h2 class="blog-title">New Stuff!</h2>
-                <h5 class="blog-date">October 6, 2025</h5>
-                <p class="blog-paragraph">
-                  Another project has been added to the Cool Stuff section! Be sure to go check it out. We're excited to share more fun projects with you all soon.
-                </p>
-            </div>
-            
-            <!-- Blog Post 2 -->
-            <div class="card">
-                <img src="logo.png" alt="Website V0.2 Placeholder" class="blogimg">
-                <h2 class="blog-title">Website V0.2!</h2>
-                <h5 class="blog-date">August 20, 2025</h5>
-                <p class="blog-paragraph">
-                  The website is finally starting to come together! Though it's still a bit buggy and missing some content, we've made a lot of progress. We also published our first lil fun project in the Cool Stuff section!
-                </p>
-            </div>
+            <div class="max-w-3xl mx-auto space-y-10">
+                
+                <!-- BLOG POST TEMPLATE: Copy this block to add a new post -->
+                <!--
+                <article class="p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-2">New Post Title</h3>
+                    <p class="text-sm text-gray-400 mb-3">Month Day, Year</p>
+                    <p class="leading-relaxed">
+                        New post content goes here...
+                    </p>
+                </article>
+                -->
 
-            <!-- Blog Post 3 -->
-            <div class="card">
-                <img src="logo.png" alt="Website Launch Placeholder" class="blogimg">
-                <h2 class="blog-title">The Website Launches!</h2>
-                <h5 class="blog-date">July 14, 2025</h5>
-                <p class="blog-paragraph">
-                  The website has launched today! (Or technically yesterday, as it took a day to get the blog page up and running!) We hope to provide some awesome content very (very) soon!
-                </p>
-            </div>
-            
-            <!-- 
-            ==================================================================
-            === NEW BLOG POST TEMPLATE =======================================
-            ================================="=================================
-            To add a new blog post, copy the <div class="card"> block below 
-            and paste it at the top, right under the <div class="leftcolumn">
-            ==================================================================
-            
-            <div class="card">
-                <img src="https://placehold.co/800x400/545768/FFFFFF?text=Your+Image" alt="A descriptive alt text" class="blogimg">
-                <h2 class="blog-title">Your New Blog Post Title</h2>
-                <h5 class="blog-date">Month Day, 20XX</h5>
-                <p class="blog-paragraph">
-                    This is a small paragraph for your new blog post. Write a short, engaging summary of what the article is about here.
-                </p>
-            </div>
+                <!-- New Blog Post -->
+                <article class="p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-2">We've Hit Version 1.0!</h3>
+                    <p class="text-sm text-gray-400 mb-3">October 22, 2025</p>
+                    <p class="leading-relaxed">
+                        It's official! We're calling this Version 1.0 of the DamVan website. All the core pages are up, the new dark theme is solid, the pesky social logos are finally fixed, and all the links are working. We're proud to have this as our official "complete" site. Thanks for following along!
+                    </p>
+                </article>
 
-            -->
+                <!-- Existing Blog Posts -->
+                <article class="p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-2">New Stuff!</h3>
+                    <p class="text-sm text-gray-400 mb-3">October 6, 2025</p>
+                    <p class="leading-relaxed">
+                        Another project has been added to the Cool Stuff section! Be sure to go check it out. We're excited to share more fun projects with you all soon.
+                    </p>
+                </article>
 
-          </div>
-        </div>
+                <article class="p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-2">Website V0.2!</h3>
+                    <p class="text-sm text-gray-400 mb-3">August 20, 2025</p>
+                    <p class="leading-relaxed">
+                        The website is finally starting to come together! Though it's still a bit buggy and missing some content, we've made a lot of progress. We also published our first lil fun project in the Cool Stuff section!
+                    </p>
+                </article>
+
+                <article class="p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-blue-300 mb-2">The Website Launches!</h3>
+                    <p class="text-sm text-gray-400 mb-3">July 14, 2025</p>
+                    <p class="leading-relaxed">
+                        The website has launched today! (Or technically yesterday, as it took a day to get the blog page up and running!) We hope to provide some awesome content very (very) soon!
+                    </p>
+                </article>
+
+            </div>
     </div>
 
         <!-- COOL STUFF PAGE -->
     <div id="stuff" class="tabcontent">
-        <h1>Our Fun Projects</h1>
-        <div class="row">
-          <div class="leftcolumn">
-            <div class="card">
-              <h2>BeatNinja</h2>
-              <img src="BeatNinja.png" alt="BeatNinja Logo Placeholder" class="blogimg">
-              <p style="text-align: center;">A Mix Between Fruit Ninja, And Beat Saber... Sorta.</p>
-              <button class="cbutton" onclick="window.open('https://avpxxd.github.io/BeatNinja/', '_blank');"><span>Play Game</span></button>
+        <h2 class="text-3xl font-bold mb-8 text-center">Our Fun Projects</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-8">
+                
+                <!-- Project 1 -->
+                <div class="project-card p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-2xl font-semibold mb-2">BeatNinja</h3>
+                    <p class="leading-relaxed mb-4">
+                        A Mix Between Fruit Ninja, And Beat Saber... Sorta.
+                    </p>
+                    <a href="https://avpxxd.github.io/BeatNinja/" target="_blank" rel="noopener noreferrer" class="rainbow-button inline-block">
+                        Play Now
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card p-6 rounded-lg shadow-lg text-center">
+                    <h3 class="text-2xl font-semibold mb-2">I Am Not A Human</h3>
+                    <p class="leading-relaxed mb-4">
+                        Alternate Universe Captchas Are Designed To Keep Us Out!
+                    </p>
+                    <a href="https://avpxxd.github.io/codespace/" target="_blank" rel="noopener noreferrer" class="rainbow-button inline-block">
+                        Play Now
+                    </a>
+                </div>
+
             </div>
-            <div class="card">
-              <h2>I Am Not A Human</h2>
-              <img src="imnotahuman.png" alt="iamnotahuman Placeholder" class="blogimg">
-              <p style="text-align: center;">Alternate Universe Captchas Are Designed To Keep Us Out!</p>
-              <button class="cbutton" onclick="window.open('https://avpxxd.github.io/codespace/', '_blank');"><span>Check it out!</span></button>
-            </div>
-          </div>
-        </div>
     </div>
 
         <!-- SOCIAL MEDIA PAGE -->
     <div id="socials" class="tabcontent">
-      <h1><i class="fab fa-youtube"></i> Our Youtube Channel!</h1>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/_-AxdL-urGE?si=enyeBzThsQuj6l-m" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <button class="cbutton" onclick="window.open('https://www.youtube.com/@DodgeRamTheCaravan', '_blank');"><i class="fab fa-youtube"></i><span>Subscribe!</span></button>
-      
-      <h1><i class="fab fa-discord"></i> Join Our Discord!</h1>
-      <button class="cbutton" onclick="window.open('https://discord.damvan.ca/', '_blank');"><i class="fab fa-discord"></i><span>DamVan Discord</span></button>
-    </div>
+      <h2 class="text-3xl font-bold mb-8 text-center">Our Socials</h2>
+             <p class="text-lg text-center max-w-2xl mx-auto mb-10">
+                Come hang out with us! We're most active on YouTube and Discord. You can also join our cross-play Minecraft server.
+             </p>
+            
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <!-- YouTube Card -->
+                <div class="social-card p-6 rounded-lg shadow-lg text-center flex flex-col items-center">
+                    <!-- Icon -->
+                    <svg class="w-20 h-20 text-red-500 mb-4" viewBox="0 0 28 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M27.348 3.09C27.022 1.86 26.04 0.878 24.81 0.552C22.628 0 14 0 14 0C14 0 5.372 0 3.19 0.552C1.96 0.878 0.978 1.86 0.652 3.09C0 5.272 0 10 0 10C0 10 0 14.728 0.652 16.91C0.978 18.14 1.96 19.122 3.19 19.448C5.372 20 14 20 14 20C14 20 22.628 20 24.81 19.448C26.04 19.122 26.978 18.14 27.348 16.91C28 14.728 28 10 28 10C28 10 28 5.272 27.348 3.09ZM11.2 14.286V5.714L18.48 10L11.2 14.286Z"/>
+                    </svg>
+                    <h3 class="text-2xl font-semibold mb-2">YouTube</h3>
+                    <p class="leading-relaxed mb-4 flex-grow">
+                        Check out our videos, coding projects, and other fun stuff.
+                    </p>
+                    <a href="https://www.youtube.com/@DodgeRamTheCaravan" target="_blank" rel="noopener noreferrer" class="rainbow-button w-full">
+                        Watch Videos
+                    </a>
+                </div>
 
+                <!-- Discord Card -->
+                <div class="social-card p-6 rounded-lg shadow-lg text-center flex flex-col items-center">
+                    <!-- Icon -->
+                    <!-- Replaced SVG with a reliable, white PNG logo for dark mode -->
+                    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6cc3c481a15a141738_icon_clyde_white_RGB.png" alt="Discord Logo" class="w-20 h-20 mb-4 object-contain">
+                    <h3 class="text-2xl font-semibold mb-2">Discord</h3>
+                    <p class="leading-relaxed mb-4 flex-grow">
+                        Join our community Discord server to hang out, chat, and get project updates.
+                    </p>
+                    <a href="https://discord.damvan.ca/" target="_blank" rel="noopener noreferrer" class="rainbow-button w-full">
+                        Join Server
+                    </a>
+                </div>
+
+                <!-- Minecraft Card -->
+                <div class="social-card p-6 rounded-lg shadow-lg text-center flex flex-col items-center">
+                    <!-- Icon -->
+                    <!-- Replaced 2D icon with 3D grass block PNG -->
+                    <img src="https://pngimg.com/uploads/minecraft/minecraft_PNG67.png" alt="Minecraft Logo" class="w-20 h-20 mb-4 object-contain">
+                    <h3 class="text-2xl font-semibold mb-2">Minecraft Server</h3>
+                    <p class="leading-relaxed mb-4 flex-grow">
+                        Join our Bedrock & Java Crossplay server! IP: <strong>playmc.damvan.ca</strong>
+                    </p>
+                    <button id="copy-ip-button" onclick="copyIp()" class="rainbow-button w-full">
+                        Copy Server IP
+                    </button>
+                    <span id="copy-ip-feedback" class="text-sm text-green-400 mt-2 h-4"></span>
+                </div>
+            </div>
+    </div>
         <!-- CONTACT US PAGE -->
     <div id="contact" class="tabcontent">
-      <h1><i class="fas fa-user-secret"></i> Overcoming Social Anxiety...</h1>
-      <h5>This page is under construction!</h5>
+      <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+            <p class="text-lg mb-6">
+                Feel free to contact us at our main email address.
+            </p>
+            
+            <a href="mailto:contact@damvan.ca" class="rainbow-button inline-block mb-16">
+                Email: contact@damvan.ca
+            </a>
+
+            <!-- Personal Portfolios -->
+            <h2 class="text-3xl font-bold mb-10">Meet the Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Will's Card -->
+                <div class="contact-card bg-white rounded-lg shadow-lg p-6 text-left">
+                    <!-- Image Placeholder -->
+                    <div class="w-full h-40 bg-gray-600 rounded-md flex items-center justify-center mb-4">
+                        <span class="text-gray-400">Image Placeholder</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-1">Will Hyndman</h3>
+                    <p class="text-gray-400 mb-3">(Branchy18269)</p>
+                    <a href="https://willhyndman.ca/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline font-medium block">
+                        View Portfolio Here
+                    </a>
+                </div>
+
+                <!-- Dalton's Card -->
+                <div class="contact-card bg-white rounded-lg shadow-lg p-6 text-left">
+                    <!-- Image Placeholder -->
+                    <div class="w-full h-40 bg-gray-600 rounded-md flex items-center justify-center mb-4">
+                        <span class="text-gray-400">Image Placeholder</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-1">Dalton Goodwin-Peck</h3>
+                    <p class="text-gray-400 mb-3">(TheLocalAdmin)</p>
+                    <a href="https://thelocalad.men/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline font-medium block">
+                        View Portfolio Here
+                    </a>
+                </div>
+
+                <!-- Andrew's Card -->
+                <div class="contact-card bg-white rounded-lg shadow-lg p-6 text-left">
+                    <!-- Image Placeholder -->
+                    <div class="w-full h-40 bg-gray-600 rounded-md flex items-center justify-center mb-4">
+                        <span class="text-gray-400">Image Placeholder</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-1">Andrew Veinotte</h3>
+                    <p class="text-gray-400 mb-3">(AVPxxd)</p>
+                    <a href="https://avpxxd.github.io/website/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline font-medium block">
+                        View Portfolio Here
+                    </a>
+                </div>
+
+            </div>
     </div>
   
 <!-- PAGE FOOTER -->
-<footer>
-    <p>&copy; 2025 DamVan | All rights reserved.</p>
-</footer>
+<!-- Footer -->
+    <footer class="mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-400">
+            <p>&copy; 2025 DamVan | All rights reserved.</p>
+        </div>
+    </footer>
 
 <!-- EMBEDDED SCRIPT.JS -->
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
@@ -544,8 +702,45 @@
             openCity({currentTarget: homeLink}, 'home');
         }
     });
+    // Function to copy IP to clipboard
+        function copyIp() {
+            const ip = 'playmc.damvan.ca';
+            // Use execCommand as a fallback for clipboard API
+            const textArea = document.createElement('textarea');
+            textArea.value = ip;
+            textArea.style.position = 'fixed'; // Prevent scrolling to bottom of page in MS Edge.
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            document.body.appendChild(textArea);
+            textArea.select();
+            let successful = false;
+            try {
+                successful = document.execCommand('copy');
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+            document.body.removeChild(textArea);
+
+            // Show feedback
+            const feedback = document.getElementById('copy-ip-feedback');
+            const button = document.getElementById('copy-ip-button');
+            if (successful) {
+                feedback.textContent = 'Copied!';
+                button.classList.add('bg-green-600'); // Show success
+                setTimeout(() => {
+                    feedback.textContent = '';
+                    button.classList.remove('bg-green-600');
+                }, 2000);
+            } else {
+                feedback.textContent = 'Failed to copy';
+                 setTimeout(() => {
+                    feedback.textContent = '';
+                }, 2000);
+            }
+        }
 </script>
 
 </body>
 </html>
+
 
