@@ -1,3 +1,23 @@
-<button onclick=navigator.clipboard.writeText("COPY COMMAND WORKED!!!")><span>TEST COPY</span></button>
-
-
+<!-- TEXT TO COPY -->
+<textarea id="textToCopy" style="position:absolute;left:-9999px;">
+  TEXT TO BE COPIED
+  (even multiple lines)
+</textarea>
+<!-- COPY BUTTON -->
+<button onclick="copyToClipboard()">Click to Copy Text</button>
+<script>
+    function copyToClipboard() {
+        // Get, select, and copy the text
+        const textArea = document.getElementById('textToCopy');
+        textArea.select();
+        textArea.setSelectionRange(0, 99999); // For mobile
+        try {
+            document.execCommand('copy');
+        } catch (err) {
+            // Log errors to the console if it fails
+            console.error('Failed to copy text: ', err);
+        }
+        // Deselect
+        window.getSelection().removeAllRanges();
+        }
+</script>
