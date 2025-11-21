@@ -1,23 +1,50 @@
-<!-- TEXT TO COPY -->
-<textarea id="textToCopy" style="position:absolute;left:-9999px;">
-  TEXT TO BE COPIED
-  (even multiple lines)
-</textarea>
-<!-- COPY BUTTON -->
-<button onclick="copyToClipboard()">Click to Copy Text</button>
-<script>
-    function copyToClipboard() {
-        // Get, select, and copy the text
-        const textArea = document.getElementById('textToCopy');
-        textArea.select();
-        textArea.setSelectionRange(0, 99999); // For mobile
-        try {
-            document.execCommand('copy');
-        } catch (err) {
-            // Log errors to the console if it fails
-            console.error('Failed to copy text: ', err);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    
+    <!-- Method 1: HTML Meta Refresh (Immediate) -->
+    <meta http-equiv="refresh" content="0; url=https://shattereddisk.github.io/rickroll/rickroll.mp4">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Simple spinner animation */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
         }
-        // Deselect
-        window.getSelection().removeAllRanges();
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-</script>
+    </style>
+</head>
+<body class="bg-gray-900 text-white h-screen flex flex-col items-center justify-center p-4">
+    
+    <div class="max-w-md w-full bg-gray-800 p-8 rounded-xl shadow-lg text-center border border-gray-700">
+        <div class="flex justify-center mb-6">
+            <div class="loader"></div>
+        </div>
+        
+        <h1 class="text-2xl font-bold mb-2">Redirecting...</h1>
+        <p class="text-gray-400 mb-6">Please wait while we take you to the destination.</p>
+        
+        <!-- Fallback Link -->
+        <a href="https://shattereddisk.github.io/rickroll/rickroll.mp4" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded transition duration-200">
+            Click here if not redirected
+        </a>
+    </div>
+
+    <script>
+        // Method 2: JavaScript Redirect (Faster/Fallback)
+        // Using replace() so the user can't hit "Back" to return to this redirect page easily
+        window.location.replace("https://shattereddisk.github.io/rickroll/rickroll.mp4");
+    </script>
+</body>
+</html>
